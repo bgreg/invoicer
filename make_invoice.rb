@@ -8,7 +8,7 @@ class MakeInvoice
   def make
     itemizer = Itemizer.new(PersonalInfo::RATE)
     itemizer.add_row(
-      Row.new("Meeting with JOEL for update, group review of tracker.js source code half day, and half day troubleshooting CORS in firefox.", "08/09/2015", 7.57)
+      Row.new("description", "01/02/2014", 4)
     ) 
 
     invoice_number = next_invoice_number 
