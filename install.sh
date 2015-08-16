@@ -3,7 +3,7 @@
 install_file_if_missing() {
   if [ ! -f $1 ]; then  
     echo "making file $1"
-    cp personal_info_template.rb personal_info.rb
+    cp $2 $1 
   fi 
 } 
 
@@ -14,7 +14,7 @@ install_directory_if_missing() {
   fi
 }
 
-
-install_file_if_missing "personal_info.rb"
+install_file_if_missing "personal_info.rb" "personal_info_template.rb"
+install_file_if_missing "last_invoice.txt" "last_invoice_template.txt"
 install_directory_if_missing "paid"
 install_directory_if_missing "unpaid"
