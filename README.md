@@ -14,6 +14,9 @@ This is a work in progress, if you have any ideas about how it can progress, ple
 
 - run `ruby make_invoice.rb` and follow the onscreen instructions
 
+![screen shot 2015-08-21 at 1 14 27 pm](https://cloud.githubusercontent.com/assets/3711139/9418217/3258c862-4807-11e5-9db3-dff1c477de0c.png)
+
+
 
 #### TODO: 
 
