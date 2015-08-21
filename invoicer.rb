@@ -16,7 +16,7 @@ class Invoicer
     "#{line_items}\n"\
     "\n"\
     "#{footer}\n"\
-    "\tThank You"
+    "\tThank You\n"
   end
 
   private
