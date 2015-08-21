@@ -25,12 +25,12 @@ and you will get this:
 
 #### TODO: 
 
--[ ] When an invoice has been paid build a script that lets you say `pay invoice_1` 
+- [ ] When an invoice has been paid build a script that lets you say `pay invoice_1` 
     which would move it would move it to paid folder and give it a time stamp.  
 
--[ ] make the invoicer render handle any length string and still look like a box
+- [ ] make the invoicer render handle any length string and still look like a box
 
--[ ] Handle formatting of large numbers.  
+- [ ] Handle formatting of large numbers.  
 
--[ ] Improve word breaks in the row class
+- [ ] Improve word breaks in the row class
 
