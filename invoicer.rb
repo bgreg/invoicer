@@ -1,5 +1,6 @@
 require 'date'
 require_relative 'personal_info'
+require_relative 'table'
 
 class Invoicer
 
@@ -13,7 +14,7 @@ class Invoicer
     "#{header}\n"\
     "#{bill_to}\n"\
     "\n"\
-    "#{line_items}\n"\
+    "#{Table.new(@itemizer, @rate).line_items}\n"\
     "\n"\
     "#{footer}\n"\
     "\tThank You\n"
@@ -40,21 +41,6 @@ class Invoicer
     "\t Mail to: \n"\
     "\t   #{PersonalInfo::MAIL_TO[0]}\n"\
     "\t   #{PersonalInfo::MAIL_TO[1]}\n"
-  end
-
-  def line_items
-    head = "\t+----------------------------------------------------------------------------------------------+\n"\
-           "\t| DESCRIPTION                                       |    DATE    |  RATE  |  HOURS |  AMOUNT   |\n"\
-           "\t+---------------------------------------------------+------------+--------+--------+-----------+"
-
-    tail = "\t|  TOTAL                                            |            |        |        |  $#{total}  |\n"\
-           "\t+---------------------------------------------------+------------+--------+--------+-----------+"
-    "#{head}\n#{@itemizer.rows.join("\n")}\n#{tail}"
-  end
-
-
-  def total
-    (@itemizer.total_hours * @rate).round(2)
   end
 end
 
