@@ -25,8 +25,11 @@ class MakeInvoice
       printer(GREEN, "Hours [0-99]: ")
       hours = gets.chomp.to_i
 
-      if [ description, date].all?{ |i| i != "" } && hours != 0
+      if [description, date].all?{ |i| i != "" } && hours != 0
         rows << Row.new(description, date, hours)
+      else
+        printer(RED, "No data given")
+        line_break(1)
       end
 
       printer(RED, "Enter another item?  [y|n]: ")

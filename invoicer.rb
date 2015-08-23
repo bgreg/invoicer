@@ -6,15 +6,14 @@ class Invoicer
 
   def initialize(num, rate, itemizer)
     @invoice_number = num
-    @rate           = rate
-    @itemizer       = itemizer
+    @table          = Table.new(itemizer, rate)
   end
 
   def invoice
     "#{header}\n"\
     "#{bill_to}\n"\
     "\n"\
-    "#{Table.new(@itemizer, @rate).line_items}\n"\
+    "#{@table.line_items}\n"\
     "\n"\
     "#{footer}\n"\
     "\tThank You\n"
