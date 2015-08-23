@@ -35,16 +35,11 @@ class Invoicer
   end
 
   def footer
-    "\t+-------------------------+----------------+\n"\
-    "\t| Make checks payable to:                  |\n"\
-    "\t|                                          |\n"\
-    "\t|   #{PersonalInfo::PAYABLE_TO}                           |\n"\
-    "\t|                                          |\n"\
-    "\t| Mail to:                                 |\n"\
-    "\t|                                          |\n"\
-    "\t|   #{PersonalInfo::MAIL_TO[0]}                     |\n"\
-    "\t|   #{PersonalInfo::MAIL_TO[1]}                   |\n"\
-    "\t+-------------------------+----------------+\n"
+    "\t Make checks payable to:\n"\
+    "\t   #{PersonalInfo::PAYABLE_TO}\n\n"\
+    "\t Mail to: \n"\
+    "\t   #{PersonalInfo::MAIL_TO[0]}\n"\
+    "\t   #{PersonalInfo::MAIL_TO[1]}\n"
   end
 
   def line_items
