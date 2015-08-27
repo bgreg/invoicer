@@ -34,3 +34,4 @@ and you will get this:
 
 - [ ] Improve word breaks in the row class
 
+- [ ] Rip out all the table rendering logic and replace it with this: https://github.com/tj/terminal-table because he already handled all the edgecases.  
