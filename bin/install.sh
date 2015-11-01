@@ -15,7 +15,7 @@ install_directory_if_missing() {
 }
 
 install_file_if_missing "personal_info.rb" "templates/personal_info_template.rb"
-install_file_if_missing "last_invoice.txt" "last_invoice_template.txt"
+install_file_if_missing "last_invoice.txt" "templates/last_invoice_template.txt"
 install_directory_if_missing "paid"
 install_directory_if_missing "unpaid"
 bundle install
