@@ -1,8 +1,8 @@
-require_relative "invoicer"
-require_relative "itemizer"
-require_relative "row"
-require_relative "personal_info"
-require_relative "make_invoice"
+require_relative "../app/invoicer"
+require_relative "../app/itemizer"
+require_relative "../app/row"
+require_relative "../personal_info"
+require_relative "../app/make_invoice"
 
 class MakeInvoice
   def test

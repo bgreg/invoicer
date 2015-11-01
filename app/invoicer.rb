@@ -1,5 +1,5 @@
 require 'date'
-require_relative 'personal_info'
+require_relative '../personal_info'
 require_relative 'table'
 
 class Invoicer

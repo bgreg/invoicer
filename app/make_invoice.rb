@@ -1,7 +1,7 @@
 require_relative "invoicer"
 require_relative "itemizer"
 require_relative "row"
-require_relative 'personal_info'
+require_relative '../personal_info'
 
 class MakeInvoice
   CYAN  = "\e[36m"
@@ -76,5 +76,3 @@ class MakeInvoice
     count.times{|t| puts }
   end
 end
-
-MakeInvoice.new.run
