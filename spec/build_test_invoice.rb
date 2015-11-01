@@ -10,7 +10,7 @@ class MakeInvoice
     rows << Row.new("Test1", "01/01/2014", 9999)
     rows << Row.new("Test2", "01/01/2014", 9999)
     rows << Row.new("Test3", "01/01/2014", 9999)
-    make(rows)
+    make(rows, 0)
   end
 end
 

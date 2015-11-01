@@ -1,3 +1,5 @@
+require 'rubygems'
+require 'terminal-table'
 require_relative "invoicer"
 require_relative "itemizer"
 require_relative "row"
@@ -42,11 +44,9 @@ class MakeInvoice
     end
   end
 
-  def make(rows)
+  def make(rows, invoice_number = next_invoice_number)
     itemizer = Itemizer.new(PersonalInfo::RATE)
     rows.each{ |row| itemizer.add_row(row) }
-
-    invoice_number = next_invoice_number
 
     File.write(
       "unpaid/invoice_#{invoice_number}.txt",
