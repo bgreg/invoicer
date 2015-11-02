@@ -3,6 +3,8 @@ class Row < Struct.new(:description, :date, :hours, :rate)
     [wrap(description), date, rate, hours, total]
   end
 
+  private
+
   def total
     (rate * hours).round(2)
   end
