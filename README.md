@@ -26,4 +26,6 @@ and you will get this:
 #### TODO:
 
 - [ ] When an invoice has been paid build a script that lets you say `pay invoice_1`
-    which would move it would move it to paid folder and give it a time stamp.
+      which would move it would move it to paid folder and give it a time stamp.
+- [ ] Migrate personal info constants into ruby yaml store, as well as the program constants like
+      the last invoice number for a client
