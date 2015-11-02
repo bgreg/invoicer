@@ -27,11 +27,3 @@ and you will get this:
 
 - [ ] When an invoice has been paid build a script that lets you say `pay invoice_1`
     which would move it would move it to paid folder and give it a time stamp.
-
-- [ ] make the invoicer render handle any length string and still look like a box
-
-- [ ] Handle formatting of large numbers.
-
-- [ ] Improve word breaks in the row class
-
-- [ ] Rip out all the table rendering logic and replace it with this: https://github.com/tj/terminal-table because he already handled all the edgecases.
