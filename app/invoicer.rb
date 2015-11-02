@@ -6,40 +6,39 @@ class Invoicer
 
   def initialize(num, rate, itemizer)
     @invoice_number = num
-    @table          = Table.new(itemizer, rate)
+    @table          = Table.build_table(itemizer, rate)
   end
 
   def invoice
     "#{header}\n"\
     "#{bill_to}\n"\
     "\n"\
-    "#{@table.line_items}\n"\
+    "#{@table}\n"\
     "\n"\
     "#{footer}\n"\
-    "\tThank You\n"
+    "Thank You\n"
   end
 
   private
 
   def header
     "\n\n"\
-    "\tInvoice: #{@invoice_number}\n"\
-    "\tDate:    #{Date.today}\n"\
-    "\tDue:     Upon Receipt"
+    "Invoice: #{@invoice_number}\n"\
+    "Date:    #{Date.today}\n"\
+    "Due:     Upon Receipt"
   end
 
   def bill_to
-    "\tBill To: #{PersonalInfo::BILL_TO[0]}\n"\
-    "\t         #{PersonalInfo::BILL_TO[1]}\n"\
-    "\t         #{PersonalInfo::BILL_TO[2]}"
+    "Bill To: #{PersonalInfo::BILL_TO[0]}\n"\
+    "         #{PersonalInfo::BILL_TO[1]}\n"\
+    "         #{PersonalInfo::BILL_TO[2]}"
   end
 
   def footer
-    "\t Make checks payable to:\n"\
-    "\t   #{PersonalInfo::PAYABLE_TO}\n\n"\
-    "\t Mail to: \n"\
-    "\t   #{PersonalInfo::MAIL_TO[0]}\n"\
-    "\t   #{PersonalInfo::MAIL_TO[1]}\n"
+    "Make checks payable to:\n"\
+    "   #{PersonalInfo::PAYABLE_TO}\n\n"\
+    "Mail to: \n"\
+    "   #{PersonalInfo::MAIL_TO[0]}\n"\
+    "   #{PersonalInfo::MAIL_TO[1]}\n"
   end
 end
-

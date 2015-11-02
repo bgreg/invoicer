@@ -14,7 +14,7 @@ class Itemizer
   def add_row(row)
     row.rate = @rate
     @hours << row.hours
-    @rows << row.to_s
+    @rows << row.to_a
+    @rows << :separator
   end
 end
-

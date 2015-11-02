@@ -28,7 +28,7 @@ class MakeInvoice
       hours = gets.chomp.to_i
 
       if [description, date].all?{ |i| i != "" } && hours != 0
-        rows << Row.new(description, date, hours)
+        rows << Row.new(description, date, hours, PersonalInfo::RATE)
       else
         printer(RED, "No data given")
         line_break(1)
