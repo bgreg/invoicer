@@ -9,8 +9,8 @@ describe Table do
   it "constructs a table structure from rows" do
     row      = double(rows: [test_row])
     row.rows << :separator
-    itemizer = double(rows: row.rows, total_hours: 1)
-    table = described_class.build_table(itemizer, 2)
+    line_items = double(rows: row.rows, total_hours: 1)
+    table = described_class.build_table(line_items, 2)
 
     expect(table.to_s).to eq(
       "+-------------------------+------------------------+-------------------+--------------------+--------------------------+\n"\

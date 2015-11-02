@@ -3,12 +3,12 @@ require 'terminal-table'
 class Table
   HEADING = %w{ DESCRIPTION DATE RATE HOURS AMOUNT }
 
-  def self.build_table(itemizer, rate)
-    new(itemizer, rate).generate
+  def self.build_table(line_items, rate)
+    new(line_items, rate).generate
   end
 
-  def initialize(itemizer, rate)
-    @itemizer = itemizer
+  def initialize(line_items, rate)
+    @line_items = line_items
     @rate     = rate
   end
 
@@ -22,10 +22,10 @@ class Table
   private
 
   def build_rows
-    @itemizer.rows << total
+    @line_items.rows << total
   end
 
   def total
-    ["TOTAL", nil, nil, nil, "#{(@itemizer.total_hours * @rate).round(2)}"]
+    ["TOTAL", nil, nil, nil, "#{(@line_items.total_hours * @rate).round(2)}"]
   end
 end

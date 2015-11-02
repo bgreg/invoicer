@@ -1,12 +1,19 @@
+# This class will generate the header and footer of the invoice.
+# It accepts an LineItem object that can be used to build the
+# line items table as well as tracks the current invoice number.
+#
+# If further formatting is required, extract the current methods into a
+# text formatted. This will also allow for an HTML formatter to be built.
+#
 require 'date'
 require_relative '../personal_info'
 require_relative 'table'
 
 class Invoicer
 
-  def initialize(num, rate, itemizer)
+  def initialize(num, rate, line_items)
     @invoice_number = num
-    @table          = Table.build_table(itemizer, rate)
+    @table          = Table.build_table(line_items, rate)
   end
 
   def invoice

@@ -1,5 +1,5 @@
 require_relative "../app/invoicer"
-require_relative "../app/itemizer"
+require_relative "../app/line_items"
 require_relative "../app/row"
 require_relative "../personal_info"
 require_relative "../app/make_invoice"
