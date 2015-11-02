@@ -19,4 +19,8 @@ class LineItems
     @rows << row.to_a
     @rows << :separator
   end
+
+  def add_rows(row_objects)
+    row_objects.each{ |r| add_row(r) }
+  end
 end

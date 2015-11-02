@@ -46,7 +46,7 @@ class MakeInvoice
 
   def make(rows, invoice_number = next_invoice_number)
     line_items = LineItems.new
-    rows.each{ |row| line_items.add_row(row) }
+    line_items.add_rows(rows)
 
     File.write(
       "unpaid/invoice_#{invoice_number}.txt",
