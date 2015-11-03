@@ -6,7 +6,6 @@
 # text formatted. This will also allow for an HTML formatter to be built.
 #
 require 'date'
-require_relative '../personal_info'
 require_relative 'table'
 
 class Invoicer
@@ -36,16 +35,16 @@ class Invoicer
   end
 
   def bill_to
-    "Bill To: #{PersonalInfo::BILL_TO[0]}\n"\
-    "         #{PersonalInfo::BILL_TO[1]}\n"\
-    "         #{PersonalInfo::BILL_TO[2]}"
+    "Bill To: #{@client_data[:bill_to][0]}\n"\
+    "         #{@client_data[:bill_to][1]}\n"\
+    "         #{@client_data[:bill_to][2]}"
   end
 
   def footer
     "Make checks payable to:\n"\
-    "   #{PersonalInfo::PAYABLE_TO}\n\n"\
+    "   #{@client_data[:payable_to]}\n\n"\
     "Mail to: \n"\
-    "   #{PersonalInfo::MAIL_TO[0]}\n"\
-    "   #{PersonalInfo::MAIL_TO[1]}\n"
+    "   #{@client_data[:mail_to][0]}\n"\
+    "   #{@client_data[:mail_to][1]}\n"
   end
 end

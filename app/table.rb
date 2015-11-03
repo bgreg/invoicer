@@ -2,6 +2,7 @@ require 'terminal-table'
 
 class Table
   HEADING = %w{ DESCRIPTION DATE RATE HOURS AMOUNT }
+  STYLE = { width: 120 }
 
   def self.build_table(line_items, rate)
     new(line_items, rate).generate
@@ -9,14 +10,14 @@ class Table
 
   def initialize(line_items, rate)
     @line_items = line_items
-    @rate     = rate
+    @rate       = rate
   end
 
   def generate
    Terminal::Table.new(
       headings: HEADING,
       rows:     build_rows,
-      style:    {width: 120})
+      style:    STYLE)
   end
 
   private

@@ -1,14 +1,30 @@
 require 'rubygems'
 require 'terminal-table'
+require 'yaml/store'
 require_relative "invoicer"
 require_relative "line_items"
 require_relative "row"
-require_relative '../personal_info'
+require_relative '../db/struct/client'
 
 class MakeInvoice
   CYAN  = "\e[36m"
   GREEN = "\e[92m"
   RED   = "\e[31m"
+
+  def initialize
+    store = YAML::Store.new("db/invoice.store")
+
+    client = Struct::Client.new(
+      rate: 99,
+      bill_to: ["Security One", "3344 PeachTrees","MegaCityOne, Ny, 55555"],
+      payable_to: "Judge Dredd",
+      mail_to: ["12345 Justice Drive", "Mega City One, Ny, 55555"]
+    )
+
+    store.transaction do
+      store["client1"] = client
+    end
+  end
 
   def run
     rows = []
@@ -50,8 +66,7 @@ class MakeInvoice
 
     File.write(
       "unpaid/invoice_#{invoice_number}.txt",
-      Invoicer.new(invoice_number, PersonalInfo::RATE, line_items).invoice
-    )
+      Invoicer.new(invoice_number, PersonalInfo::RATE, line_items).invoice)
 
     printer(CYAN, "Created invoice number #{invoice_number}")
     line_break(1)

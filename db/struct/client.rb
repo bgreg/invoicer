@@ -1,0 +1,1 @@
+Struct.new("Client", :options)
