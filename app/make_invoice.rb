@@ -11,8 +11,8 @@ class MakeInvoice
   GREEN = "\e[92m"
   RED   = "\e[31m"
 
-  def initialize
-    store = YAML::Store.new("db/invoice.store")
+  def initialize(options = {})
+   store = YAML::Store.new("db/invoice.store")
 
     client = Struct::Client.new(
       rate: 99,
@@ -24,10 +24,13 @@ class MakeInvoice
     store.transaction do
       store["client1"] = client
     end
+    @file_path  = options.fetch(:file_path, false)
+    @line_items = options.fetch(:line_items, LineItems.new)
+    @std_in     = options.fetch(:std_in, STDIN)
+    @rows       = []
   end
 
   def run
-    rows = []
     continue = true
 
     printer(CYAN, "Welcome to Invoicer, enter as many line items as need.")
@@ -35,45 +38,48 @@ class MakeInvoice
 
     while continue do
       printer(GREEN, "Description [stuff I did]: ")
-      description = gets.chomp
+      description = @std_in.gets.chomp
 
       printer(GREEN, "Date [01/01/2222]: ")
-      date = gets.chomp
+      date = @std_in.gets.chomp
 
       printer(GREEN, "Hours [0-99]: ")
-      hours = gets.chomp.to_i
+      hours = @std_in.gets.chomp.to_i
 
-      if [description, date].all?{ |i| i != "" } && hours != 0
-        rows << Row.new(description, date, hours, PersonalInfo::RATE)
+      if [description, date].all?{ |i| !i.empty? } && hours != 0
+        @rows << Row.new(description, date, hours, PersonalInfo::RATE)
       else
         printer(RED, "No data given")
         line_break(1)
       end
 
       printer(RED, "Enter another item?  [y|n]: ")
-      continue = gets.chomp.downcase  == "y" ? true : false
+      continue = @std_in.gets.chomp.downcase  == "y" ? true : false
       line_break(2)
     end
 
-    unless rows.empty?
-      make(rows)
-    end
+    make unless @rows.empty?
   end
 
-  def make(rows, invoice_number = next_invoice_number)
-    line_items = LineItems.new
-    line_items.add_rows(rows)
-
-    File.write(
-      "unpaid/invoice_#{invoice_number}.txt",
-      Invoicer.new(invoice_number, PersonalInfo::RATE, line_items).invoice)
-
+  def make(invoice_number = next_invoice_number)
+    @line_items.add_rows(@rows)
+    write_file(invoice_number)
     printer(CYAN, "Created invoice number #{invoice_number}")
     line_break(1)
     increment_invoice_record(invoice_number)
   end
 
+  def write_file(invoice_number)
+    File.write(
+      path(invoice_number),
+      Invoicer.new(invoice_number, PersonalInfo::RATE, @line_items).invoice)
+  end
+
   private
+
+  def path(number)
+    @file_path ? @file_path : "unpaid/invoice_#{number}.txt"
+  end
 
   def next_invoice_number
     File.read("last_invoice.txt").chomp.to_i + 1
@@ -88,6 +94,6 @@ class MakeInvoice
   end
 
   def line_break(count)
-    count.times{|t| puts }
+    count.times{ puts }
   end
 end
