@@ -1,9 +1,9 @@
 ---
 :clients:
-- default
-- new
-:last_invoice: 1
-default: !ruby/struct:Struct::Client
+- Mega City One
+- Simba City
+:last_invoice: 0
+Mega City One: !ruby/struct:Struct::Client
   rate: 99
   bill_to:
   - Security One
@@ -13,7 +13,7 @@ default: !ruby/struct:Struct::Client
   mail_to:
   - 12345 Justice Drive
   - Mega City One, Ny, 55555
-new: !ruby/struct:Struct::Client
+Simba City: !ruby/struct:Struct::Client
   rate: 99
   bill_to:
   - Security One

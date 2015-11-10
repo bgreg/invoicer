@@ -10,9 +10,10 @@ require_relative 'table'
 
 class Invoicer
 
-  def initialize(num, rate, line_items)
+  def initialize(num, rate, line_items, client_data)
     @invoice_number = num
     @table          = Table.build_table(line_items, rate)
+    @client_data    = client_data
   end
 
   def invoice
