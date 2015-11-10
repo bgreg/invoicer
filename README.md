@@ -1,13 +1,10 @@
-Hi,
-
-This is a work in progress, if you have any ideas about how it can progress, please let me know or send a PR!
-
 #### Install instructions:
 
 1. `git clone https://github.com/bgreg/invoicer.git`
 1. `cd invoicer`
 1. `./bin/install.sh`
-1. Fill in your personal info in personal_info.rb
+1. open `db/invoice.store` and follow the example to enter your client data
+1. dont forget to add new clients to the clients list on top
 
 
 #### Usage instructions:
@@ -22,10 +19,5 @@ and you will get this:
 ![screen shot 2015-08-21 at 1 24 03 pm](https://cloud.githubusercontent.com/assets/3711139/9418327/fe96adae-4807-11e5-8397-f8af75525732.png)
 
 
-
-#### TODO:
-
-- [ ] When an invoice has been paid build a script that lets you say `pay invoice_1`
-      which would move it would move it to paid folder and give it a time stamp.
-- [ ] Migrate personal info constants into ruby yaml store, as well as the program constants like
-      the last invoice number for a client
+TODO:
+- [ ] make a system for adding clients
