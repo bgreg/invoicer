@@ -17,7 +17,3 @@
 and you will get this:
 
 ![screen shot 2015-08-21 at 1 24 03 pm](https://cloud.githubusercontent.com/assets/3711139/9418327/fe96adae-4807-11e5-8397-f8af75525732.png)
-
-
-TODO:
-- [ ] make a system for adding clients
