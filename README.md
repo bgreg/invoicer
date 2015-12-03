@@ -17,3 +17,10 @@
 and you will get this:
 
 ![screen shot 2015-08-21 at 1 24 03 pm](https://cloud.githubusercontent.com/assets/3711139/9418327/fe96adae-4807-11e5-8397-f8af75525732.png)
+
+
+TODO:
+
+1. Add system for tracking incremental payments
+1. Add HTML & PDF rendering options
+1. Add automation to completely setup and configure a chrome profile for a given client
